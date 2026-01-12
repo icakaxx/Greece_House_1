@@ -38,6 +38,16 @@ npm run build
 
 This will generate a static site in the `out` directory.
 
+### Deploy to Vercel:
+
+```bash
+npm run deploy
+```
+
+Or manually deploy the `out/` directory to any static hosting service.
+
+**Note:** This project uses static export (`output: 'export'` in `next.config.js`) for maximum performance and zero cold starts. The `vercel.json` configuration ensures proper deployment on Vercel.
+
 ## Project Structure
 
 ```
