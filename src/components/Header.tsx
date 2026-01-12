@@ -1,13 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTranslation } from "./LanguageProvider";
 import { property } from "@/content/property";
 import LanguageSwitcher from "./LanguageSwitcher";
 
+// Default translations for SSR
+const defaultTranslations = {
+  nav: {
+    gallery: "Gallery",
+    amenities: "Amenities",
+    location: "Location",
+    contact: "Contact"
+  }
+};
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const { t } = useTranslation();
+  const [translations, setTranslations] = useState(defaultTranslations);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,7 +24,31 @@ export default function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+
+    // Load translations on client side
+    const loadTranslations = async () => {
+      try {
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        const translationModule = await import(`../../messages/${savedLanguage}.json`);
+        setTranslations(translationModule.default);
+      } catch (error) {
+        console.warn('Failed to load translations, using defaults');
+      }
+    };
+
+    loadTranslations();
   }, []);
+
+  const t = (key: string) => {
+    const keys = key.split('.');
+    let value: any = translations;
+
+    for (const k of keys) {
+      value = value?.[k];
+    }
+
+    return value || key;
+  };
 
   return (
     <header

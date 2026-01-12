@@ -1,8 +1,51 @@
-import { useTranslation } from "./LanguageProvider";
+"use client";
+
+import { useState, useEffect } from "react";
 import { property } from "@/content/property";
 
+// Default translations for SSR
+const defaultTranslations = {
+  hero: {
+    subtitle: "Steps from the sea • Family-friendly • Quiet neighborhood",
+    viewGallery: "View Gallery",
+    contactOwner: "Contact Owner"
+  },
+  heroChips: {
+    nearBeach: "Near Beach",
+    freeWifi: "Free Wi-Fi",
+    freeParking: "Free Parking",
+    airConditioning: "A/C"
+  }
+};
+
 export default function Hero() {
-  const { t } = useTranslation();
+  const [translations, setTranslations] = useState(defaultTranslations);
+
+  useEffect(() => {
+    // Load translations on client side
+    const loadTranslations = async () => {
+      try {
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        const translationModule = await import(`../../messages/${savedLanguage}.json`);
+        setTranslations(translationModule.default);
+      } catch (error) {
+        console.warn('Failed to load translations, using defaults');
+      }
+    };
+
+    loadTranslations();
+  }, []);
+
+  const t = (key: string) => {
+    const keys = key.split('.');
+    let value: any = translations;
+
+    for (const k of keys) {
+      value = value?.[k];
+    }
+
+    return value || key;
+  };
 
   return (
     <section className="hero-bg min-h-screen flex items-center justify-center relative pt-16">
