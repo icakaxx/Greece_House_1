@@ -2,7 +2,7 @@
 
 ---
 
-## ✅ PROMPT (ENGLISH)
+## ✅ PROMPT! (ENGLISH)
 
 Build a **mobile-first, high-converting SSP (single static page / static site)** website for a **Greek guest house / vacation rental**, targeting locations: **Ofrynio, Kavala, Nea Peramos, and any other Greece locations**.
 
