@@ -1,0 +1,1156 @@
+Ето ти **готов English prompt** (за Cursor / ChatGPT / dev), за **SSP (single static page / static site)** в **Next.js**, mobile-first, с hero, gallery, details (near beach), house name, и карта най-долу + floating contact buttons вдясно.
+
+---
+
+## ✅ PROMPT (ENGLISH)
+
+Build a **mobile-first, high-converting SSP (single static page / static site)** website for a **Greek guest house / vacation rental**, targeting locations: **Ofrynio, Kavala, Nea Peramos, and any other Greece locations**.
+
+### Tech stack & constraints
+
+* **Next.js (App Router)** + **TypeScript**
+* **SSP / Static output** (no database). Content should come from a local file like `src/content/property.ts` (or JSON).
+* Styling: **Tailwind CSS**
+* Use `next/image` everywhere (optimized images, responsive sizes).
+* The site must score high on performance and mobile UX.
+
+### Goal
+
+A simple, elegant landing page that helps owners get **direct inquiries** via quick contact buttons (WhatsApp/Viber/Telegram/Facebook/Instagram/Phone), with minimal friction.
+
+---
+
+## Page structure (single page `/`)
+
+### 1) Header (sticky, minimal)
+
+* Logo / house name
+* 1 CTA button: “Contact” (scrolls to contact area)
+* Language switch optional (EN/GR/BG-ready structure)
+
+### 2) Hero section (top)
+
+Must include:
+
+* **House name** (e.g., “Villa Ammolofi Retreat”)
+* Short tagline (e.g., “Steps from the sea • Family-friendly • Quiet neighborhood”)
+* 2 CTAs:
+
+  * **View Gallery** (scrolls to gallery)
+  * **Contact Owner** (opens a modal or scrolls to contact)
+* Key chips (icons): “Near beach”, “Parking”, “Wi-Fi”, “Air conditioning”, etc.
+* Hero background image (beautiful exterior / seaside vibe)
+
+### 3) Quick highlights block (below hero)
+
+* Distance to beach (e.g., “3 min walk to the beach”)
+* Capacity (e.g., “Sleeps 6”)
+* Bedrooms/Bathrooms
+* Check-in/out times (optional)
+* A mini “Why you’ll love it” list (3–5 bullets)
+
+### 4) Gallery section
+
+* Mobile-first gallery (swipeable carousel on mobile, grid on desktop)
+* Lightbox on click (tap to zoom)
+* Optimize: lazy-loading, blurred placeholder
+
+### 5) About / Location description
+
+* Text: where it is (Ofrynio / Kavala / Nea Peramos etc.)
+* Clearly state: **is it close to the beach**, what type of beach, nearby amenities (supermarket, tavernas)
+* Add “Nearby attractions” (3–6 items)
+
+### 6) Amenities section
+
+* Use icon cards
+* Group amenities by category (Comfort, Kitchen, Outdoor, Family)
+
+### 7) Contact section + floating buttons
+
+**Floating buttons fixed on the right side** (mobile and desktop):
+
+* WhatsApp
+* Viber
+* Telegram
+* Facebook
+* Instagram
+* Phone call
+
+Rules:
+
+* Buttons should be stacked vertically on the right.
+* On mobile, they should be compact and not cover important content (allow collapse/expand).
+* Each button uses the correct deep link format:
+
+  * WhatsApp: `https://wa.me/<number>`
+  * Viber: `viber://chat?number=<number>` (and include a fallback link)
+  * Telegram: `https://t.me/<username>`
+  * Phone: `tel:<number>`
+  * Facebook/Instagram: profile URL
+
+Also include a normal contact block with:
+
+* Owner name
+* Phone
+* Optional email
+* “Copy” buttons for phone/email
+
+### 8) Map section (bottom)
+
+* A map embed (Google Maps iframe is fine for SSP)
+* Show approximate pin / exact address (configurable)
+* Add a small disclaimer if needed: “Location shown is approximate” (optional)
+
+### 9) Footer
+
+* Simple: house name, location, social links
+* “Invoice & contract available” note (if the site is used by an agency)
+
+---
+
+## Content model (local file)
+
+Create `src/content/property.ts`:
+
+* houseName
+* tagline
+* locations (array)
+* nearBeachText + beachDistanceMeters
+* galleryImages (array of URLs)
+* amenities (array)
+* contacts (whatsapp, viber, telegram, fb, ig, phone)
+* mapEmbedUrl
+* nearbyAttractions (array)
+* SEO fields: title, description, ogImage
+
+---
+
+## SEO requirements
+
+* Proper metadata (title/description/OpenGraph)
+* JSON-LD schema for a lodging / vacation rental (basic)
+* Clean headings (H1 once, H2 sections)
+* Optimized images, fast LCP
+
+---
+
+## UI/UX requirements
+
+* Mobile-first layout
+* Clear spacing, premium look
+* Smooth scroll between sections
+* Gallery opens fast and feels “app-like”
+* Floating contact buttons always visible but non-intrusive (collapsible)
+
+---
+
+## Extra features (nice-to-have, include if fast)
+
+* “Check availability” button (simple: opens a WhatsApp template message like:
+  “Hi, is your place available from DD/MM to DD/MM for X guests?”)
+* Testimonials section (3 short reviews)
+* FAQ accordion (parking, pets, noise rules, check-in)
+* “Share” button (copy page link / native share on mobile)
+* PWA-ready basics (optional)
+
+---
+
+## Deliverables
+
+* Full Next.js project structure
+* Components:
+
+  * `Hero`
+  * `Gallery`
+  * `Amenities`
+  * `Attractions`
+  * `FloatingContactButtons`
+  * `MapEmbed`
+* Uses `property.ts` as the single source of truth
+* Clean, production-ready code
+
+---
+
+## 🖼️ Example image sources (use these as placeholders)
+
+(Use as hero + gallery placeholders. Prefer Unsplash images.)
+
+```txt
+Unsplash collections / searches:
+- Beach house photos: https://unsplash.com/s/photos/beach-house
+- Greek house photos: https://unsplash.com/s/photos/greek-house
+- Greece beach photos: https://unsplash.com/s/photos/greece-beach
+- Kavala photos: https://unsplash.com/s/photos/kavala
+
+Specific photo pages (good for a Greece / Kavala vibe):
+- Kavala balcony/sea house (photo page): https://unsplash.com/photos/a-stone-building-with-a-balcony-overlooking-the-ocean-JHgREU-tdtA
+- Kavala aerial city/sea (photo page): https://unsplash.com/photos/a-large-body-of-water-surrounded-by-a-city-53oNMGCRBMg
+- Kavala coastal city (photo page): https://unsplash.com/photos/a-city-with-a-body-of-water-in-the-background-3JDMrQdrQt0
+- Greece house by sea (photo page): https://unsplash.com/photos/aerial-photo-of-house-beside-sea-qeM8Cap_Nbk
+- Greece traditional white houses (photo page): https://unsplash.com/photos/white-and-brown-houses-yqU3nIYt_oE
+```
+
+Sources used for the placeholder image links above: ([Unsplash][1])
+
+---
+
+Ако искаш, мога да ти направя и **втора версия на промпта**, която е “template-style” за много къщи (multi-property), пак статично, но със страници `/properties/[slug]`.
+
+[1]: https://unsplash.com/s/photos/beach-house?utm_source=chatgpt.com "100+ Beach House Pictures | Download Free Images on ..."
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Ammolofi Retreat | Beachfront Vacation Rental in Ofrynio, Greece</title>
+    <meta name="description" content="Beautiful family-friendly vacation rental just steps from the sea in Ofrynio, Greece. Near Kavala & Nea Peramos. Book directly with the owner.">
+    <meta property="og:title" content="Villa Ammolofi Retreat | Greek Seaside Escape">
+    <meta property="og:description" content="Steps from the beach • Sleeps 6 • Family-friendly • Direct booking">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=1200">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "Villa Ammolofi Retreat",
+        "description": "Beautiful family-friendly vacation rental just steps from the sea in Ofrynio, Greece.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ofrynio",
+            "addressRegion": "Kavala",
+            "addressCountry": "GR"
+        },
+        "amenityFeature": [
+            {"@type": "LocationFeatureSpecification", "name": "Free WiFi"},
+            {"@type": "LocationFeatureSpecification", "name": "Air Conditioning"},
+            {"@type": "LocationFeatureSpecification", "name": "Free Parking"},
+            {"@type": "LocationFeatureSpecification", "name": "Beach Access"}
+        ]
+    }
+    </script>
+    <style>
+        :root {
+            --color-primary: #1e3a5f;
+            --color-accent: #c9a962;
+            --color-sand: #f5f0e8;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=1600&q=80') center/cover no-repeat;
+        }
+        .gallery-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .floating-buttons {
+            transition: all 0.3s ease;
+        }
+        .floating-btn {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+        .lightbox {
+            backdrop-filter: blur(10px);
+        }
+        .amenity-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .amenity-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+        .swiper-container {
+            overflow: hidden;
+        }
+        .swiper-wrapper {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        .swiper-slide {
+            flex-shrink: 0;
+            width: 85%;
+            margin-right: 12px;
+        }
+        @media (min-width: 768px) {
+            .swiper-slide {
+                width: 45%;
+            }
+        }
+        .chip {
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2">
+                <svg class="w-8 h-8 text-[#1e3a5f]" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 3L4 9v12h16V9l-8-6zm0 2.5L18 10v9H6v-9l6-4.5z"/>
+                    <circle cx="12" cy="14" r="2"/>
+                </svg>
+                <span class="font-display text-xl font-semibold text-[#1e3a5f]">Villa Ammolofi</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+                <a href="#gallery" class="hover:text-[#1e3a5f] transition">Gallery</a>
+                <a href="#amenities" class="hover:text-[#1e3a5f] transition">Amenities</a>
+                <a href="#location" class="hover:text-[#1e3a5f] transition">Location</a>
+            </nav>
+            <a href="#contact" class="bg-[#1e3a5f] text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-[#2d4a6f] transition shadow-lg">
+                Contact
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center relative pt-16">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
+        <div class="relative z-10 text-center text-white px-4 py-20 max-w-4xl mx-auto">
+            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-lg">
+                Villa Ammolofi Retreat
+            </h1>
+            <p class="text-lg md:text-xl lg:text-2xl mb-8 opacity-95 font-light">
+                Steps from the sea • Family-friendly • Quiet neighborhood
+            </p>
+            
+            <!-- Feature Chips -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <span class="chip bg-white/20 px-4 py-2 rounded-full text-sm flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+                    Near Beach
+                </span>
+                <span class="chip bg-white/20 px-4 py-2 rounded-full text-sm flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg>
+                    Free Wi-Fi
+                </span>
+                <span class="chip bg-white/20 px-4 py-2 rounded-full text-sm flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    Free Parking
+                </span>
+                <span class="chip bg-white/20 px-4 py-2 rounded-full text-sm flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    A/C
+                </span>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#gallery" class="bg-white text-[#1e3a5f] px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition shadow-xl flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    View Gallery
+                </a>
+                <a href="#contact" class="bg-[#c9a962] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#b8994f] transition shadow-xl flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Contact Owner
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white animate-bounce">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+    </section>
+
+    <!-- Quick Highlights -->
+    <section class="bg-[#f5f0e8] py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-12">
+                <!-- Beach Distance -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-[#1e3a5f] rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M9 21V10a3 3 0 016 0v11M5 21V7l7-4 7 4v14"/>
+                        </svg>
+                    </div>
+                    <p class="text-2xl md:text-3xl font-bold text-[#1e3a5f]">3 min</p>
+                    <p class="text-gray-600 text-sm">Walk to beach</p>
+                </div>
+                <!-- Capacity -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-[#1e3a5f] rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <p class="text-2xl md:text-3xl font-bold text-[#1e3a5f]">6</p>
+                    <p class="text-gray-600 text-sm">Guests</p>
+                </div>
+                <!-- Bedrooms -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-[#1e3a5f] rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
+                    <p class="text-2xl md:text-3xl font-bold text-[#1e3a5f]">3</p>
+                    <p class="text-gray-600 text-sm">Bedrooms</p>
+                </div>
+                <!-- Bathrooms -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-[#1e3a5f] rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
+                        </svg>
+                    </div>
+                    <p class="text-2xl md:text-3xl font-bold text-[#1e3a5f]">2</p>
+                    <p class="text-gray-600 text-sm">Bathrooms</p>
+                </div>
+            </div>
+
+            <!-- Why You'll Love It -->
+            <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg max-w-3xl mx-auto">
+                <h3 class="font-display text-2xl text-[#1e3a5f] mb-4 text-center">Why You'll Love It</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-[#c9a962] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <span><strong>Sandy beach just 150m away</strong> – perfect for morning swims</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-[#c9a962] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <span><strong>Quiet residential area</strong> – peaceful nights guaranteed</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-[#c9a962] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <span><strong>Fully equipped kitchen</strong> – cook your fresh catches</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-[#c9a962] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <span><strong>Private garden & BBQ</strong> – great for family gatherings</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-[#c9a962] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <span><strong>Easy access to Kavala & Thasos</strong> – explore the region</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="font-display text-3xl md:text-4xl text-center text-[#1e3a5f] mb-4">Gallery</h2>
+            <p class="text-gray-600 text-center mb-10">Take a tour of your future vacation home</p>
+            
+            <!-- Mobile Swiper -->
+            <div class="md:hidden swiper-container" id="mobileGallery">
+                <div class="swiper-wrapper pb-4" id="swiperWrapper">
+                    <!-- Images loaded via JS -->
+                </div>
+                <div class="flex justify-center gap-2 mt-4" id="swiperDots"></div>
+            </div>
+
+            <!-- Desktop Grid -->
+            <div class="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4" id="desktopGallery">
+                <!-- Images loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 lightbox hidden items-center justify-center">
+        <button id="closeLightbox" class="absolute top-4 right-4 text-white p-2 hover:bg-white/10 rounded-full transition">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <button id="prevImage" class="absolute left-4 text-white p-2 hover:bg-white/10 rounded-full transition">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="nextImage" class="absolute right-4 text-white p-2 hover:bg-white/10 rounded-full transition">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <img id="lightboxImage" src="" alt="" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg">
+        <div id="lightboxCounter" class="absolute bottom-4 text-white text-sm"></div>
+    </div>
+
+    <!-- About / Location -->
+    <section id="location" class="py-16 md:py-24 bg-[#f5f0e8]">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-display text-3xl md:text-4xl text-[#1e3a5f] mb-6">Your Greek Seaside Escape</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Nestled in the charming coastal village of <strong>Ofrynio</strong>, our villa offers the perfect blend of tranquility and convenience. Located in the <strong>Kavala region</strong> of Northern Greece, you're just a short drive from the historic city of Kavala and the beautiful Nea Peramos coastline.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        The <strong>sandy Ammolofi Beach</strong> is just a <strong>3-minute walk</strong> away – one of the most beautiful beaches in the region with crystal-clear, shallow waters perfect for families with children.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Within walking distance, you'll find a mini-market, traditional Greek tavernas, and a bakery. The famous Kavala port (for ferries to Thasos island) is only 25 minutes by car.
+                    </p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <h3 class="font-display text-xl text-[#1e3a5f] mb-4 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-[#c9a962]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Nearby Attractions
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-8 h-8 bg-[#1e3a5f]/10 rounded-full flex items-center justify-center text-[#1e3a5f] text-sm font-bold">1</span>
+                            <span><strong>Ammolofi Beach</strong> – 150m (3 min walk)</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-8 h-8 bg-[#1e3a5f]/10 rounded-full flex items-center justify-center text-[#1e3a5f] text-sm font-bold">2</span>
+                            <span><strong>Kavala Old Town</strong> – 20 km (25 min)</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-8 h-8 bg-[#1e3a5f]/10 rounded-full flex items-center justify-center text-[#1e3a5f] text-sm font-bold">3</span>
+                            <span><strong>Thasos Ferry Port</strong> – 22 km (25 min)</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-8 h-8 bg-[#1e3a5f]/10 rounded-full flex items-center justify-center text-[#1e3a5f] text-sm font-bold">4</span>
+                            <span><strong>Nea Peramos</strong> – 8 km (10 min)</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-8 h-8 bg-[#1e3a5f]/10 rounded-full flex items-center justify-center text-[#1e3a5f] text-sm font-bold">5</span>
+                            <span><strong>Philippi Archaeological Site</strong> – 30 km</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-8 h-8 bg-[#1e3a5f]/10 rounded-full flex items-center justify-center text-[#1e3a5f] text-sm font-bold">6</span>
+                            <span><strong>Kavala Airport (KVA)</strong> – 35 km</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="font-display text-3xl md:text-4xl text-center text-[#1e3a5f] mb-4">Amenities</h2>
+            <p class="text-gray-600 text-center mb-12">Everything you need for a comfortable stay</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Comfort -->
+                <div class="amenity-card bg-[#f5f0e8] rounded-2xl p-6">
+                    <div class="w-12 h-12 bg-[#1e3a5f] rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-[#1e3a5f] mb-3">Comfort</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Air Conditioning
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Free Wi-Fi
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Smart TV
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Heating
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Iron & Board
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kitchen -->
+                <div class="amenity-card bg-[#f5f0e8] rounded-2xl p-6">
+                    <div class="w-12 h-12 bg-[#1e3a5f] rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-[#1e3a5f] mb-3">Kitchen</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Full Kitchen
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Refrigerator
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Microwave
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Coffee Maker
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Dishwasher
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Outdoor -->
+                <div class="amenity-card bg-[#f5f0e8] rounded-2xl p-6">
+                    <div class="w-12 h-12 bg-[#1e3a5f] rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-[#1e3a5f] mb-3">Outdoor</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Private Garden
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            BBQ Grill
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Outdoor Furniture
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Free Parking
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Sea View Balcony
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Family -->
+                <div class="amenity-card bg-[#f5f0e8] rounded-2xl p-6">
+                    <div class="w-12 h-12 bg-[#1e3a5f] rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <h3 class="font-semibold text-[#1e3a5f] mb-3">Family</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Baby Cot
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            High Chair
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Beach Toys
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Board Games
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            Washing Machine
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 md:py-24 bg-[#1e3a5f] text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="font-display text-3xl md:text-4xl text-center mb-4">What Guests Say</h2>
+            <p class="text-white/70 text-center mb-12">Real reviews from happy visitors</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-white/90 mb-4 italic">"Perfect location! The beach was literally 2 minutes away. Our kids loved it. The house was spotless and had everything we needed."</p>
+                    <p class="font-semibold">— Maria K., Bulgaria</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-white/90 mb-4 italic">"We stayed for 10 days and didn't want to leave. The owner was very helpful and responsive. Highly recommend for a relaxing vacation!"</p>
+                    <p class="font-semibold">— Thomas R., Germany</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#c9a962]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-white/90 mb-4 italic">"Beautiful villa with amazing views. We used the BBQ every evening. Great base for exploring Kavala and day trips to Thasos."</p>
+                    <p class="font-semibold">— Elena P., Romania</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="font-display text-3xl md:text-4xl text-center text-[#1e3a5f] mb-4">Frequently Asked Questions</h2>
+            <p class="text-gray-600 text-center mb-10">Everything you need to know before booking</p>
+
+            <div class="space-y-4" id="faqAccordion">
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full flex items-center justify-between p-5 text-left bg-gray-50 hover:bg-gray-100 transition" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-[#1e3a5f]">What are the check-in and check-out times?</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 bg-white">
+                        <p class="text-gray-600">Check-in is from <strong>3:00 PM</strong> and check-out is until <strong>11:00 AM</strong>. Early check-in or late check-out can be arranged upon request, subject to availability.</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full flex items-center justify-between p-5 text-left bg-gray-50 hover:bg-gray-100 transition" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-[#1e3a5f]">Is parking available?</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 bg-white">
+                        <p class="text-gray-600">Yes! We offer <strong>free private parking</strong> for up to 2 vehicles within the property grounds. Street parking is also available nearby.</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full flex items-center justify-between p-5 text-left bg-gray-50 hover:bg-gray-100 transition" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-[#1e3a5f]">Are pets allowed?</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 bg-white">
+                        <p class="text-gray-600">Small, well-behaved pets are welcome upon prior arrangement. Please let us know in advance so we can prepare accordingly. A small cleaning fee may apply.</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full flex items-center justify-between p-5 text-left bg-gray-50 hover:bg-gray-100 transition" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-[#1e3a5f]">What about noise and parties?</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 bg-white">
+                        <p class="text-gray-600">This is a family-friendly property in a quiet residential area. We kindly ask guests to respect quiet hours after <strong>11 PM</strong>. Parties and events are not permitted.</p>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-btn w-full flex items-center justify-between p-5 text-left bg-gray-50 hover:bg-gray-100 transition" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-[#1e3a5f]">How do I pay and is there a deposit?</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 bg-white">
+                        <p class="text-gray-600">We accept bank transfer, cash, or PayPal. A <strong>30% deposit</strong> is required to confirm your booking, with the remaining balance due upon arrival. A €100 security deposit is collected at check-in and returned after check-out.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-[#f5f0e8]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-display text-3xl md:text-4xl text-center text-[#1e3a5f] mb-4">Contact the Owner</h2>
+            <p class="text-gray-600 text-center mb-10">Book directly and save – no platform fees!</p>
+
+            <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                <div class="flex flex-col md:flex-row gap-8 items-center mb-8">
+                    <div class="w-24 h-24 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-3xl font-display">
+                        YP
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-xl font-semibold text-[#1e3a5f]">Yannis Papadopoulos</h3>
+                        <p class="text-gray-600">Property Owner</p>
+                        <p class="text-sm text-gray-500 mt-1">Usually responds within 1 hour</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
+                        <svg class="w-6 h-6 text-[#1e3a5f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-500">Phone</p>
+                            <p class="font-medium text-[#1e3a5f]">+30 694 123 4567</p>
+                        </div>
+                        <button onclick="copyToClipboard('+306941234567', this)" class="text-sm text-[#c9a962] hover:underline">Copy</button>
+                    </div>
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
+                        <svg class="w-6 h-6 text-[#1e3a5f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-500">Email</p>
+                            <p class="font-medium text-[#1e3a5f]">stay@villaammolofi.gr</p>
+                        </div>
+                        <button onclick="copyToClipboard('stay@villaammolofi.gr', this)" class="text-sm text-[#c9a962] hover:underline">Copy</button>
+                    </div>
+                </div>
+
+                <!-- Check Availability Form -->
+                <div class="bg-[#1e3a5f] rounded-xl p-6 text-white">
+                    <h4 class="font-semibold mb-4 text-center">Check Availability</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                        <div>
+                            <label class="text-sm text-white/70 block mb-1">Check-in</label>
+                            <input type="date" id="checkinDate" class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[#c9a962]">
+                        </div>
+                        <div>
+                            <label class="text-sm text-white/70 block mb-1">Check-out</label>
+                            <input type="date" id="checkoutDate" class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[#c9a962]">
+                        </div>
+                        <div>
+                            <label class="text-sm text-white/70 block mb-1">Guests</label>
+                            <select id="guestsCount" class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[#c9a962]">
+                                <option value="1">1 guest</option>
+                                <option value="2">2 guests</option>
+                                <option value="3">3 guests</option>
+                                <option value="4">4 guests</option>
+                                <option value="5">5 guests</option>
+                                <option value="6">6 guests</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button onclick="sendWhatsAppInquiry()" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="font-display text-3xl md:text-4xl text-center text-[#1e3a5f] mb-4">Location</h2>
+            <p class="text-gray-600 text-center mb-10">Ofrynio, Kavala Region, Northern Greece</p>
+
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12234.076177814546!2d24.193!3d40.8494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aed99d8c8b8a9d%3A0x500bd2ce2b9ba30!2sOfrinio!5e0!3m2!1sen!2sgr!4v1699999999999"
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="w-full"
+                ></iframe>
+            </div>
+            <p class="text-sm text-gray-500 text-center mt-4">📍 Location shown is approximate for privacy. Exact address provided after booking.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1e3a5f] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3L4 9v12h16V9l-8-6zm0 2.5L18 10v9H6v-9l6-4.5z"/>
+                            <circle cx="12" cy="14" r="2"/>
+                        </svg>
+                        <span class="font-display text-xl font-semibold">Villa Ammolofi Retreat</span>
+                    </div>
+                    <p class="text-white/70 text-sm">Your perfect Greek seaside escape in Ofrynio, Kavala region. Direct booking available.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-white/70 text-sm">
+                        <li><a href="#gallery" class="hover:text-white transition">Gallery</a></li>
+                        <li><a href="#amenities" class="hover:text-white transition">Amenities</a></li>
+                        <li><a href="#location" class="hover:text-white transition">Location</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex gap-3">
+                        <a href="https://facebook.com/villaammolofi" target="_blank" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/villaammolofi" target="_blank" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/20 pt-8 text-center text-white/50 text-sm">
+                <p>© 2024 Villa Ammolofi Retreat. All rights reserved.</p>
+                <p class="mt-2">📄 Invoice & rental contract available upon request.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Buttons -->
+    <div id="floatingButtons" class="fixed right-4 bottom-4 z-50 floating-buttons">
+        <button id="toggleFloating" class="md:hidden w-14 h-14 bg-[#1e3a5f] text-white rounded-full shadow-xl flex items-center justify-center mb-2" onclick="toggleFloatingMenu()">
+            <svg id="floatingIcon" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        </button>
+        <div id="floatingMenu" class="flex-col gap-2 hidden md:flex">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/306941234567" target="_blank" class="floating-btn w-12 h-12 bg-[#25D366] text-white rounded-full shadow-lg flex items-center justify-center" title="WhatsApp">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <!-- Viber -->
+            <a href="viber://chat?number=306941234567" target="_blank" class="floating-btn w-12 h-12 bg-[#7360F2] text-white rounded-full shadow-lg flex items-center justify-center" title="Viber">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.398.002C9.473.028 5.293.344 3.017 2.467 1.269 4.21.567 6.782.46 9.988c-.108 3.205-.232 9.217 5.635 10.886l.007.003v2.498s-.037.998.62 1.203c.79.247 1.256-.51 2.013-1.324.415-.447.989-1.103 1.42-1.605 3.917.328 6.926-.423 7.27-.535.79-.257 5.263-.83 5.992-6.77.753-6.126-.449-9.999-2.942-11.753C18.666.46 15.108.012 11.398.002zm.297 1.752c3.32-.007 6.452.358 8.124 1.726 2.019 1.413 2.92 4.67 2.274 9.927-.592 4.83-4.102 5.192-4.748 5.402-.284.092-2.884.742-6.2.531 0 0-2.456 2.966-3.224 3.74-.12.121-.262.168-.356.145-.132-.033-.168-.19-.166-.419l.024-4.072c-4.972-1.345-4.68-6.316-4.592-9.003.089-2.688.657-4.87 2.095-6.296 1.896-1.847 5.451-2.166 6.769-2.181zm-.255 2.467c-.159.001-.318.011-.476.03a.49.49 0 00-.434.54.5.5 0 00.545.442c1.43-.173 2.81.278 3.847 1.249a4.377 4.377 0 011.294 3.595.496.496 0 00.437.55.5.5 0 00.555-.43 5.355 5.355 0 00-1.595-4.414 5.529 5.529 0 00-4.173-1.562zm-2.147.678a.664.664 0 00-.485.146l-.018.016c-.345.313-.678.668-.862 1.058-.183.39-.234.834-.057 1.297l.008.02c.52 1.33 1.2 2.59 2.063 3.735l.01.013.012.016a15.402 15.402 0 003.032 3.022l.015.01.015.011c1.147.864 2.406 1.545 3.737 2.066l.02.008c.462.177.906.126 1.296-.057.39-.184.745-.517 1.058-.862l.016-.018a.664.664 0 00.163-.72c-.094-.27-.423-.582-.927-.948-.504-.367-1.15-.787-1.626-1.09a.664.664 0 00-.756.035l-.642.575a.664.664 0 01-.742.093s-1.105-.616-2.024-1.535c-.919-.92-1.535-2.024-1.535-2.024a.664.664 0 01.093-.742l.575-.642a.664.664 0 00.035-.756c-.303-.476-.723-1.122-1.09-1.626-.367-.504-.678-.833-.948-.927a.664.664 0 00-.235-.037zm2.264.695c-.12 0-.24.044-.335.135a.502.502 0 00-.023.707c.012.013 1.237 1.313 1.242 3.195a.499.499 0 00.498.502h.002a.5.5 0 00.498-.502c-.006-2.287-1.473-3.87-1.544-3.945a.499.499 0 00-.338-.092zm-1.69.92a.498.498 0 00-.352.14.5.5 0 00-.005.707c.017.018 1.766 1.87 1.755 4.42a.5.5 0 001 .002c.012-2.987-1.99-5.103-2.056-5.173a.498.498 0 00-.343-.096z"/></svg>
+            </a>
+            <!-- Telegram -->
+            <a href="https://t.me/villaammolofi" target="_blank" class="floating-btn w-12 h-12 bg-[#0088cc] text-white rounded-full shadow-lg flex items-center justify-center" title="Telegram">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <!-- Facebook -->
+            <a href="https://m.me/villaammolofi" target="_blank" class="floating-btn w-12 h-12 bg-[#1877F2] text-white rounded-full shadow-lg flex items-center justify-center" title="Messenger">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://instagram.com/villaammolofi" target="_blank" class="floating-btn w-12 h-12 bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F77737] text-white rounded-full shadow-lg flex items-center justify-center" title="Instagram">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- Phone -->
+            <a href="tel:+306941234567" class="floating-btn w-12 h-12 bg-[#1e3a5f] text-white rounded-full shadow-lg flex items-center justify-center" title="Call">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Property Data (Content Model)
+        const property = {
+            houseName: "Villa Ammolofi Retreat",
+            tagline: "Steps from the sea • Family-friendly • Quiet neighborhood",
+            locations: ["Ofrynio", "Kavala", "Nea Peramos"],
+            nearBeachText: "3 min walk to the beach",
+            beachDistanceMeters: 150,
+            galleryImages: [
+                "https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=800&q=80",
+                "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+                "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+                "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+                "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
+                "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800&q=80",
+                "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"
+            ],
+            contacts: {
+                whatsapp: "+306941234567",
+                viber: "+306941234567",
+                telegram: "villaammolofi",
+                facebook: "villaammolofi",
+                instagram: "villaammolofi",
+                phone: "+306941234567"
+            }
+        };
+
+        // Initialize Gallery
+        let currentImageIndex = 0;
+
+        function initGallery() {
+            const mobileWrapper = document.getElementById('swiperWrapper');
+            const desktopGallery = document.getElementById('desktopGallery');
+            const swiperDots = document.getElementById('swiperDots');
+
+            property.galleryImages.forEach((img, index) => {
+                // Mobile slides
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide';
+                slide.innerHTML = `
+                    <img src="${img}" alt="Villa photo ${index + 1}" 
+                         class="w-full h-64 object-cover rounded-xl cursor-pointer" 
+                         loading="lazy"
+                         onclick="openLightbox(${index})">
+                `;
+                mobileWrapper.appendChild(slide);
+
+                // Dots
+                const dot = document.createElement('button');
+                dot.className = `w-2 h-2 rounded-full ${index === 0 ? 'bg-[#1e3a5f]' : 'bg-gray-300'}`;
+                dot.onclick = () => goToSlide(index);
+                swiperDots.appendChild(dot);
+
+                // Desktop grid
+                const gridItem = document.createElement('div');
+                gridItem.className = 'gallery-item rounded-xl overflow-hidden cursor-pointer';
+                gridItem.innerHTML = `
+                    <img src="${img}" alt="Villa photo ${index + 1}" 
+                         class="w-full h-64 object-cover" 
+                         loading="lazy">
+                `;
+                gridItem.onclick = () => openLightbox(index);
+                desktopGallery.appendChild(gridItem);
+            });
+
+            // Touch swipe for mobile
+            let startX, endX;
+            mobileWrapper.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+            mobileWrapper.addEventListener('touchend', e => {
+                endX = e.changedTouches[0].clientX;
+                if (startX - endX > 50) goToSlide(Math.min(currentImageIndex + 1, property.galleryImages.length - 1));
+                if (endX - startX > 50) goToSlide(Math.max(currentImageIndex - 1, 0));
+            });
+        }
+
+        function goToSlide(index) {
+            currentImageIndex = index;
+            const wrapper = document.getElementById('swiperWrapper');
+            const slideWidth = wrapper.querySelector('.swiper-slide').offsetWidth + 12;
+            wrapper.style.transform = `translateX(-${index * slideWidth}px)`;
+            
+            // Update dots
+            document.querySelectorAll('#swiperDots button').forEach((dot, i) => {
+                dot.className = `w-2 h-2 rounded-full ${i === index ? 'bg-[#1e3a5f]' : 'bg-gray-300'}`;
+            });
+        }
+
+        // Lightbox
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImage');
+            img.src = property.galleryImages[index];
+            document.getElementById('lightboxCounter').textContent = `${index + 1} / ${property.galleryImages.length}`;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + property.galleryImages.length) % property.galleryImages.length;
+            document.getElementById('lightboxImage').src = property.galleryImages[currentImageIndex];
+            document.getElementById('lightboxCounter').textContent = `${currentImageIndex + 1} / ${property.galleryImages.length}`;
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % property.galleryImages.length;
+            document.getElementById('lightboxImage').src = property.galleryImages[currentImageIndex];
+            document.getElementById('lightboxCounter').textContent = `${currentImageIndex + 1} / ${property.galleryImages.length}`;
+        }
+
+        document.getElementById('closeLightbox').onclick = closeLightbox;
+        document.getElementById('prevImage').onclick = prevImage;
+        document.getElementById('nextImage').onclick = nextImage;
+        document.getElementById('lightbox').onclick = (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        };
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'ArrowRight') nextImage();
+            }
+        });
+
+        // Floating buttons toggle (mobile)
+        let floatingOpen = false;
+        function toggleFloatingMenu() {
+            floatingOpen = !floatingOpen;
+            const menu = document.getElementById('floatingMenu');
+            const icon = document.getElementById('floatingIcon');
+            if (floatingOpen) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                icon.style.transform = 'rotate(45deg)';
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                icon.style.transform = 'rotate(0)';
+            }
+        }
+
+        // FAQ Accordion
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('svg');
+            const isOpen = !content.classList.contains('hidden');
+            
+            // Close all others
+            document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.faq-btn svg').forEach(i => i.style.transform = 'rotate(0)');
+            
+            if (!isOpen) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                const original = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = original, 2000);
+            });
+        }
+
+        // WhatsApp Inquiry
+        function sendWhatsAppInquiry() {
+            const checkin = document.getElementById('checkinDate').value;
+            const checkout = document.getElementById('checkoutDate').value;
+            const guests = document.getElementById('guestsCount').value;
+            
+            let message = `Hi! I'm interested in Villa Ammolofi Retreat.`;
+            if (checkin && checkout) {
+                message += `\n\nDates: ${checkin} to ${checkout}`;
+            }
+            message += `\nGuests: ${guests}`;
+            message += `\n\nIs the villa available?`;
+            
+            window.open(`https://wa.me/306941234567?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > 100) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', initGallery);
+    </script>
+</body>
+</html>
