@@ -1,0 +1,140 @@
+{
+  "nav": {
+    "gallery": "Gallery",
+    "amenities": "Amenities",
+    "location": "Location",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Villa Ammolofi Retreat",
+    "subtitle": "Steps from the sea • Family-friendly • Quiet neighborhood",
+    "viewGallery": "View Gallery",
+    "contactOwner": "Contact Owner"
+  },
+  "heroChips": {
+    "nearBeach": "Near Beach",
+    "freeWifi": "Free Wi-Fi",
+    "freeParking": "Free Parking",
+    "airConditioning": "A/C"
+  },
+  "highlights": {
+    "beachDistance": "3 min",
+    "walkToBeach": "Walk to beach",
+    "guests": "Guests",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "whyLoveIt": "Why You'll Love It",
+    "beachText": "Sandy beach just 150m away – perfect for morning swims",
+    "quietArea": "Quiet residential area – peaceful nights guaranteed",
+    "kitchen": "Fully equipped kitchen – cook your fresh catches",
+    "garden": "Private garden & BBQ – great for family gatherings",
+    "easyAccess": "Easy access to Kavala & Thasos – explore the region"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Take a tour of your future vacation home"
+  },
+  "location": {
+    "title": "Your Greek Seaside Escape",
+    "description1": "Nestled in the charming coastal village of Ofrynio, our villa offers the perfect blend of tranquility and convenience. Located in the Kavala region of Northern Greece, you're just a short drive from the historic city of Kavala and the beautiful Nea Peramos coastline.",
+    "description2": "The sandy Ammolofi Beach is just a 3-minute walk away – one of the most beautiful beaches in the region with crystal-clear, shallow waters perfect for families with children.",
+    "description3": "Within walking distance, you'll find a mini-market, traditional Greek tavernas, and a bakery. The famous Kavala port (for ferries to Thasos island) is only 25 minutes by car.",
+    "attractions": "Nearby Attractions",
+    "beach": "Ammolofi Beach – 150m (3 min walk)",
+    "kavala": "Kavala Old Town – 20 km (25 min)",
+    "thasos": "Thasos Ferry Port – 22 km (25 min)",
+    "peramos": "Nea Peramos – 8 km (10 min)",
+    "philip": "Philippi Archaeological Site – 30 km",
+    "airport": "Kavala Airport (KVA) – 35 km"
+  },
+  "amenities": {
+    "title": "Amenities",
+    "subtitle": "Everything you need for a comfortable stay",
+    "comfort": "Comfort",
+    "kitchen": "Kitchen",
+    "outdoor": "Outdoor",
+    "family": "Family",
+    "airConditioning": "Air Conditioning",
+    "freeWifi": "Free Wi-Fi",
+    "smartTV": "Smart TV",
+    "heating": "Heating",
+    "ironBoard": "Iron & Board",
+    "fullKitchen": "Full Kitchen",
+    "refrigerator": "Refrigerator",
+    "microwave": "Microwave",
+    "coffeeMaker": "Coffee Maker",
+    "dishwasher": "Dishwasher",
+    "privateGarden": "Private Garden",
+    "bbq": "BBQ Grill",
+    "outdoorFurniture": "Outdoor Furniture",
+    "freeParking": "Free Parking",
+    "seaView": "Sea View Balcony",
+    "babyCot": "Baby Cot",
+    "highChair": "High Chair",
+    "beachToys": "Beach Toys",
+    "boardGames": "Board Games",
+    "washingMachine": "Washing Machine"
+  },
+  "testimonials": {
+    "title": "What Guests Say",
+    "subtitle": "Real reviews from happy visitors",
+    "review1": {
+      "text": "Perfect location! The beach was literally 2 minutes away. Our kids loved it. The house was spotless and had everything we needed.",
+      "author": "Maria K., Bulgaria"
+    },
+    "review2": {
+      "text": "We stayed for 10 days and didn't want to leave. The owner was very helpful and responsive. Highly recommend for a relaxing vacation!",
+      "author": "Thomas R., Germany"
+    },
+    "review3": {
+      "text": "Beautiful villa with amazing views. We used the BBQ every evening. Great base for exploring Kavala and day trips to Thasos.",
+      "author": "Elena P., Romania"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know before booking",
+    "checkin": "What are the check-in and check-out times?",
+    "checkinAnswer": "Check-in is from <strong>3:00 PM</strong> and check-out is until <strong>11:00 AM</strong>. Early check-in or late check-out can be arranged upon request, subject to availability.",
+    "parking": "Is parking available?",
+    "parkingAnswer": "Yes! We offer <strong>free private parking</strong> for up to 2 vehicles within the property grounds. Street parking is also available nearby.",
+    "pets": "Are pets allowed?",
+    "petsAnswer": "Small, well-behaved pets are welcome upon prior arrangement. Please let us know in advance so we can prepare accordingly. A small cleaning fee may apply.",
+    "noise": "What about noise and parties?",
+    "noiseAnswer": "This is a family-friendly property in a quiet residential area. We kindly ask guests to respect quiet hours after <strong>11 PM</strong>. Parties and events are not permitted.",
+    "payment": "How do I pay and is there a deposit?",
+    "paymentAnswer": "We accept bank transfer, cash, or PayPal. A <strong>30% deposit</strong> is required to confirm your booking, with the remaining balance due upon arrival. A €100 security deposit is collected at check-in and returned after check-out."
+  },
+  "contact": {
+    "title": "Contact the Owner",
+    "subtitle": "Book directly and save – no platform fees!",
+    "ownerName": "Yannis Papadopoulos",
+    "ownerTitle": "Property Owner",
+    "responseTime": "Usually responds within 1 hour",
+    "phone": "Phone",
+    "email": "Email",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "availability": "Check Availability",
+    "checkin": "Check-in",
+    "checkout": "Check-out",
+    "guests": "Guests",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "connect": "Connect",
+    "copyright": "All rights reserved.",
+    "invoice": "Invoice & rental contract available upon request."
+  },
+  "map": {
+    "title": "Location",
+    "subtitle": "Ofrynio, Kavala Region, Northern Greece",
+    "disclaimer": "Location shown is approximate for privacy. Exact address provided after booking."
+  },
+  "languages": {
+    "english": "English",
+    "bulgarian": "Български",
+    "greek": "Ελληνικά"
+  }
+}

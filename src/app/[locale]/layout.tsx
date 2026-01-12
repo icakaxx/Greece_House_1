@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
-import "./globals.css";
-import { LanguageProvider } from "@/components/LanguageProvider";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { property } from "@/content/property";
 
 const inter = Inter({
@@ -33,17 +33,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: { locale }
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${playfair.variable}`}>
       <body>
-        <LanguageProvider>
+        <NextIntlClientProvider messages={messages}>
           {children}
-        </LanguageProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
